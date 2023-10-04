@@ -1,4 +1,23 @@
-"""def bubble_sort(arr):
+"""
+#subset sum
+def is_subset_sum_possible(nums, target_sum):
+    dp = [False] * (target_sum + 1)
+    dp[0] = True
+    
+    for num in nums:
+        for j in range(target_sum, num - 1, -1):
+            dp[j] = dp[j] or dp[j - num]
+    
+    return dp[target_sum]
+
+# Example usage
+nums = [3, 34, 4, 12, 5, 2]
+target_sum = 9
+result = is_subset_sum_possible(nums, target_sum)
+print(result)
+
+#bubble sort
+def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         # Flag to optimize by avoiding unnecessary passes if the list is already sorted
@@ -79,7 +98,7 @@ elif flag==-1:
 else:
     print("True")
 
-
+#balenced 
 def is_balanced_parentheses(string):
     stack = []
     opening_brackets = ['(', '[', '{']
@@ -99,6 +118,7 @@ def is_balanced_parentheses(string):
 s=input()
 print(is_balanced_parentheses(s))
 
+#gnerate parenthesis
 def paren(res,n,open,close,str):
     if open==close and close==n:
         res.append(str)
@@ -110,6 +130,7 @@ def paren(res,n,open,close,str):
     if close<open:
         paren(res,n,open,close+1,str+')')
         paren(res,n,open,close+1,str+']')
+    
         paren(res,n,open,close+1,str+'}')
 
 def gen_par(n):
@@ -119,7 +140,7 @@ def gen_par(n):
 n=int(input())
 x=gen_par(n)
 for i in x:
-    print(i)"""
+    print(i)
 
 
 #generate parenthesis
@@ -140,5 +161,63 @@ n=int(input())
 x=gen_par(n)
 for i in x:
     print(i)
+#balenced   
+ b = input()
+if len(b) % 2 == 0:
+    n = len(b) - 1
+    if b[0] == ']' or b[0] == '}' or b[0] == ')':
+        print("Invalid Parenthesis")
+    elif b[n] == '[' or b[n] == '{' or b[n] == '(':
+        print("Invalid Parenthesis")
+    else:
+        ob = []
+        cb = []
+        for i in b:
+            if i == '{' or i == '[' or i == '(':
+                ob.append(i)
+            else:
+                cb.append(i)
+        if len(ob) == len(cb):
+            s = []
+            for i in b:
+                if i == '[' or i == '{' or i == '(':
+                    s.append(i)
+                elif i == ']' or i == '}' or i == ')':
+                    if len(s) == 0:
+                        print("Invalid Parenthesis")
+                        break
+                    if (i == ']' and s[-1] == '[') or (i == '}' and s[-1] == '{') or (i == ')' and s[-1] == '('):
+                        s.pop()
+                    else:
+                        print("Invalid Parenthesis")
+                        break
+            else:
+                if len(s) == 0:
+                    print("Valid")
+                else:
+                    print("Invalid Parenthesis")
+        else:
+            print("Invalid Parenthesis")
+else:
+    print("Invalid Parenthesis")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    """
 
 
